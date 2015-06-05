@@ -50,6 +50,9 @@ int StegCode(char* ContainerFileName, char* InformationFileName,char* OutputFile
 		cout << "Enter container is not wav.";
 		return 0;
 	}
+	for (int i = 0; i < 50; i++)
+		cout << i << " - " << inWav[i] << " - " << static_cast<int>(inWav[i]) << endl;
+	cout << endl << endl;
 	vector<unsigned char> data; 
 	
 	int fileSize = infFile.size();
@@ -88,7 +91,7 @@ int StegCode(char* ContainerFileName, char* InformationFileName,char* OutputFile
 	WriteOutFile(OutputFileName,inWav);
 	return 0;
 }
-
+//собственно, само кодирование
 int StegDecode(char* ContainerFileName, char* OutputFileName)
 {
 	vector<unsigned char> inWav = readFile(ContainerFileName);
