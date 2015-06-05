@@ -45,7 +45,11 @@ int StegCode(char* ContainerFileName, char* InformationFileName,char* OutputFile
 		{
 			cout << InformationFileName << " Information file is big" << "\n";
 		}
-	
+	if (inWav[8] != 'W' || inWav[9] != 'A' || inWav[10] != 'V' || inWav[11] != 'E')
+	{
+		cout << "Enter container is not wav.";
+		return 0;
+	}
 	vector<unsigned char> data; 
 	
 	int fileSize = infFile.size();
@@ -91,7 +95,11 @@ int StegDecode(char* ContainerFileName, char* OutputFileName)
 	
 	int wavIndex = 44; 
 	int bytesPerAmpl = GetBytesPerAmpl(inWav[34]);
-
+	if (inWav[8] != 'W' || inWav[9] != 'A' || inWav[10] != 'V' || inWav[11] != 'E')
+	{
+		cout << "Enter container is not wav.";
+		return 0;
+	}
 	int fileSize = 0;
 	int pow2 = 1; 
 	for (int i = 0; i < 16; i++)
