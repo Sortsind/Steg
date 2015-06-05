@@ -41,7 +41,7 @@ int StegCode(char* ContainerFileName, char* InformationFileName,char* OutputFile
 		return 0;
 	}
 	else
-		if (inWav.size()<infFile.size()*8 + 20 +44)
+		if (inWav.size()<infFile.size()*8 + 44)
 		{
 			cout << InformationFileName << " Information file is big" << "\n";
 		}
@@ -58,7 +58,7 @@ int StegCode(char* ContainerFileName, char* InformationFileName,char* OutputFile
 		data.push_back(fileSize % 2);
 		fileSize /= 2;
 	}
-
+//хранение размера файла
 	for (int i = 0; i < infFile.size(); i++)
 	{
 		unsigned char b = infFile[i];
@@ -68,7 +68,7 @@ int StegCode(char* ContainerFileName, char* InformationFileName,char* OutputFile
 			b /= 2;
 		}
 	}
-
+//представление файла в двоичном виде
 	int bytesPerAmpl = GetBytesPerAmpl(inWav[34]);
 
 	for (int i = 0, wavIndex = 44; i < data.size(); i++, wavIndex += bytesPerAmpl)
